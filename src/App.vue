@@ -1,17 +1,32 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <RoutingMap origin ="INDEPENDENCE,JACKSON,MO,64058,USA" destination="1701 BROAD ST,STORY CITY,IA,50248 , USA" />
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-
+import RoutingMap from "./components/RoutingMap.vue";
+import axios from "axios";
 export default {
   name: "app",
   components: {
-    HelloWorld
+    RoutingMap
+  },
+  data(){
+    return {
+    data: null
+    }
+  },
+  async created(){
+      await axios
+      .get(`/static/data.json`)
+      .then(response => {
+        // JSON responses are automatically parsed.
+        this.data = response.data;
+      })
+      .catch(e => {
+        this.errors.push(e);
+      });
   }
 };
 </script>
