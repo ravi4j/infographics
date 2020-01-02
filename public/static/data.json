@@ -1,5 +1,19 @@
 {
-    "success": true,
-    "errors": [],
-    "version": 1.0
+    "version": 1.0,
+    "items": [{
+            "id": "route",
+            "label": "Route",
+            "state": true
+        },
+        {
+            "id": "risk",
+            "label": "Risk Matrix",
+            "state": false
+        },
+        {
+            "id": "ref",
+            "label": "Reference",
+            "state": false
+        }
+    ]
 }
