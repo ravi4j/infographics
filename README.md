@@ -5,9 +5,6 @@
 ### ScatterVue - Using D3
 #### ![Screenshot](./public/snapshots/scattervue-component.PNG)
 
-  
-#### See [Configuration Reference]().
-
 ## Project setup
 ```
 npm install
