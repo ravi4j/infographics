@@ -12,12 +12,14 @@
         </b-nav>
       </b-card-header>
       <b-card-body class="text-center">
-        <b-card-text>With supporting text below as a natural lead-in to additional content.</b-card-text>
+        <b-card-text></b-card-text>
         <RoutingMap v-if="items && items[0].state" 
           origin="INDEPENDENCE,JACKSON,MO,64058,USA"
           destination="1701 BROAD ST,STORY CITY,IA,50248 , USA"
         />
-        <div v-if="items && items[1].state" >I am {{items[1].label}}</div>
+        <div v-if="items && items[1].state" >
+          <ScatterChart :payload="data.charts" />
+        </div>
         <div v-if="items && items[2].state" >I am {{items[2].label}}</div>
       </b-card-body>
     </b-card>
@@ -26,11 +28,13 @@
 
 <script>
 import RoutingMap from "./components/RoutingMap.vue";
+import ScatterChart from "./components/ScatterChart.vue";
 import axios from "axios";
 export default {
   name: "app",
   components: {
-    RoutingMap
+    RoutingMap,
+    ScatterChart
   },
   data() {
     return {

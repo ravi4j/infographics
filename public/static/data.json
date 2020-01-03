@@ -3,17 +3,63 @@
     "items": [{
             "id": "route",
             "label": "Route",
-            "state": true
+            "state": false
         },
         {
             "id": "risk",
             "label": "Risk Matrix",
-            "state": false
+            "state": true
         },
         {
             "id": "ref",
             "label": "Reference",
             "state": false
+        }
+    ],
+    "charts": [{
+            "x": 2,
+            "y": 0.1,
+            "risk": "Low"
+        },
+        {
+            "x": 10,
+            "y": 0.5,
+            "risk": "Medium"
+        },
+        {
+            "x": 22,
+            "y": 0.98,
+            "risk": "High"
+        },
+        {
+            "x": 8,
+            "y": 0.1,
+            "risk": "Low"
+        },
+        {
+            "x": 11,
+            "y": 0.6,
+            "risk": "Medium"
+        },
+        {
+            "x": 19,
+            "y": 0.9,
+            "risk": "High"
+        },
+        {
+            "x": 14,
+            "y": 0.8,
+            "risk": "High"
+        },
+        {
+            "x": 13,
+            "y": 0.7,
+            "risk": "Medium"
+        },
+        {
+            "x": 7,
+            "y": 0.4,
+            "risk": "Low"
         }
     ]
 }

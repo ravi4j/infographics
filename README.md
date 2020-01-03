@@ -1,6 +1,12 @@
 # me-info - Infographics
 ## Copmonent
 ### RoutingMap - Using Leaflet Routing Machine and GeoCoder
+#### ![Screenshot](./public/snapshots/routevue-component.PNG)
+### ScatterVue - Using D3
+#### ![Screenshot](./public/snapshots/scattervue-component.PNG)
+
+  
+#### See [Configuration Reference]().
 
 ## Project setup
 ```
