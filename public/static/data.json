@@ -17,49 +17,67 @@
         }
     ],
     "charts": [{
+            "id": 124,
             "x": 2,
             "y": 0.1,
-            "risk": "Low"
+            "risk": "Low",
+            "pulse": false
         },
         {
+            "id": 125,
             "x": 10,
             "y": 0.5,
-            "risk": "Medium"
+            "risk": "Medium",
+            "pulse": false
         },
         {
+            "id": 125,
             "x": 22,
             "y": 0.98,
-            "risk": "High"
+            "risk": "High",
+            "pulse": false
         },
         {
+            "id": 125,
             "x": 8,
             "y": 0.1,
-            "risk": "Low"
+            "risk": "Low",
+            "pulse": false
         },
         {
+            "id": 125,
             "x": 11,
             "y": 0.6,
-            "risk": "Medium"
+            "risk": "Medium",
+            "pulse": false
         },
         {
+            "id": 125,
             "x": 19,
             "y": 0.9,
-            "risk": "High"
+            "risk": "High",
+            "pulse": false
         },
         {
+            "id": 125,
             "x": 14,
             "y": 0.8,
-            "risk": "High"
+            "risk": "High",
+            "pulse": false
         },
         {
+            "id": 125,
             "x": 13,
             "y": 0.7,
-            "risk": "Medium"
+            "risk": "Medium",
+            "pulse": false
         },
         {
+            "id": 125,
             "x": 7,
             "y": 0.4,
-            "risk": "Low"
+            "risk": "Low",
+            "pulse": false
         }
     ]
 }
