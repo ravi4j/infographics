@@ -1,5 +1,16 @@
 <template>
-  <svg :width="width" :height="height" ref="svg" />
+  <div class="svg-container">
+    <div class="controls">
+      <div>
+        <label>Chart width</label>
+        <input type="range" v-model="width" min="0" max="1490" />
+      </div>
+    <div>{{ selected}}
+      <span id="memoryGaugeContainer"></span>
+    </div>
+    </div>
+    <svg v-bind:width="width" v-bind:height="height" ref="svg" />
+  </div>
 </template>
 
 <script>
@@ -12,11 +23,13 @@ export default {
   props: ["payload"],
   data() {
     return {
-      width: 960,
+      width: 1490,
       height: 500,
       xLabel: "Risk Score",
       yLabel: "On Time Probability",
-      selections: {}
+      selected: null,
+      selections: {},
+      gauges:[]
     };
   },
   mounted() {
@@ -36,6 +49,7 @@ export default {
     const colorScale = d3
       .scaleOrdinal()
       .range(["#ff0000", "#00ff00", "#FFA500"]);
+    this.selections.colorScale = colorScale;
     const xScale = d3.scaleLinear().range([0, chartWidth]);
     const yScale = d3.scaleLinear().range([chartHeight, 0]);
     const xAxis = d3
@@ -130,7 +144,7 @@ export default {
             .transition()
             .duration(200)
             .style("opacity", 0.9);
-         tooltip
+          tooltip
             .html(d.id + "<br/>" + d.risk)
             .style("left", d3.event.pageX + "px")
             .style("top", d3.event.pageY - 28 + "px");
@@ -146,7 +160,7 @@ export default {
 
       svg.call(this.colorLegend, {
         colorScale: colorScale,
-        positionX: 20,
+        positionX: 40,
         positionY: 200,
         tickRadius: 12,
         tickSpacing: 35,
@@ -158,19 +172,38 @@ export default {
     },
     circleClicked(d) {
       const circles = this.selections.graph.selectAll("circle");
-      circles.each(td => td.pulse = false).attr("r" , 5);
+      circles
+        .each(td => (td.pulse = false))
+        .transition()
+        .duration(200)
+        .attr("r", 5);
       d.pulse = !d.pulse;
+      this.selected = d.id;
       if (d.pulse) {
         var selected_circle = circles.filter(td => td === d);
         this.pulsate(selected_circle);
+        this.createGauge("cpu", "CPU");
       }
     },
     pulsate(selection) {
-      selection
+      /*  selection
         .transition()
         .duration(200)
         .ease(d3.easeLinear)
-        .attr("r", 10);
+        .attr("r", 10); */
+      (function repeat() {
+        selection = selection
+          .transition()
+          .duration(1000)
+          .attr("stroke-width", 20)
+          .attr("r", 5)
+          .transition()
+          .duration(1000)
+          .attr("stroke-width", 0.5)
+          .attr("r", 10)
+          .ease(d3.easeSin)
+          .on("end", repeat);
+      })();
     },
     colorLegend(selection, props) {
       const colorScale = props.colorScale;
@@ -229,6 +262,10 @@ export default {
 
 
 <style>
+.svg-container {
+  display: block;
+  background-color: black;
+}
 .axis .tick line {
   stroke-width: 2px;
   stroke: #dddddd;
@@ -254,16 +291,49 @@ export default {
   fill: #635f5d;
   font-family: sans-serif;
 }
-div.tooltip {	
-    position: absolute;			
-    text-align: center;			
-    width: 60px;					
-    height: 28px;					
-    padding: 2px;				
-    font: 12px sans-serif;		
-    background: lightsteelblue;	
-    border: 0px;		
-    border-radius: 8px;			
-    pointer-events: none;			
+div.tooltip {
+  position: absolute;
+  text-align: center;
+  width: 60px;
+  height: 28px;
+  padding: 2px;
+  font: 12px sans-serif;
+  background: lightsteelblue;
+  border: 0px;
+  border-radius: 8px;
+  pointer-events: none;
+}
+ .controls {
+      position: fixed;
+      background: #f8f8f8;
+      padding: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      opacity: 0.80;
+    }
+.controls > * + * {
+  margin-top: 1rem;
+}
+
+label {
+  display: block;
+}
+
+.list-enter-active,
+.list-leave-active {
+  transition: all 1s;
+}
+.list-enter, .list-leave-to /* .list-leave-active for <2.1.8 */ {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.line-enter-active,
+.line-leave-active {
+  transition: all 2s;
+  stroke-dashoffset: 0;
+}
+.line-enter, .line-leave-to /* .list-leave-active for <2.1.8 */ {
+  stroke-dashoffset: 1000;
 }
 </style>
