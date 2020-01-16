@@ -20,7 +20,9 @@
         <div v-if="items && items[1].state" >
           <ScatterChart :payload="data.charts" />
         </div>
-        <div v-if="items && items[2].state" >I am {{items[2].label}}</div>
+        <div v-if="items && items[2].state" >
+          <Gauge  label="Risk" v-bind:min="0" v-bind:max="25" v-bind:value="9" />
+        </div>
       </b-card-body>
     </b-card>
   </div>
@@ -29,12 +31,14 @@
 <script>
 import RoutingMap from "./components/RoutingMap.vue";
 import ScatterChart from "./components/ScatterChart.vue";
+import Gauge from "./components/Gauge.vue";
 import axios from "axios";
 export default {
   name: "app",
   components: {
     RoutingMap,
-    ScatterChart
+    ScatterChart,
+    Gauge
   },
   data() {
     return {

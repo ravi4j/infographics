@@ -4,6 +4,8 @@
 #### ![Screenshot](./public/snapshots/routevue-component.PNG)
 ### ScatterVue - Using D3
 #### ![Screenshot](./public/snapshots/scattervue-component.PNG)
+### GaugeVue - Using D3
+#### ![Screenshot](./public/snapshots/gaugevue-component.PNG)
 
 ## Project setup
 ```
@@ -28,3 +30,4 @@ npm run lint
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 See [Reference Scatter Chart](https://bl.ocks.org/curran/298c130e67b40ed84f8c919e748d2e72)
+See [Reference Gauge](http://bl.ocks.org/tomerd/1499279)

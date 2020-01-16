@@ -8,12 +8,12 @@
         {
             "id": "risk",
             "label": "Risk Matrix",
-            "state": true
+            "state": false
         },
         {
             "id": "ref",
-            "label": "Reference",
-            "state": false
+            "label": "Gauge",
+            "state": true
         }
     ],
     "charts": [{
